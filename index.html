@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rok Tool</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+$(document).ready(function(){
+    document.documentElement.scrollTop = 0;
+    $("#myTab a").click(function(e){
+        e.preventDefault();
+        $(this).tab("show");
+    });
+});
+
+function Speed(){
+    var days = 0;
+    var hours = 0;
+    var mins = 0;
+
+    var teamp1Min = parseInt($("#min1").val());
+    var temp5Min = parseInt($("#min5").val() * 5);
+    var temp10Min = parseInt($("#min10").val() * 10);
+    var temp15Min = parseInt($("#min15").val() * 15);
+    var temp30Min = parseInt($("#min30").val() * 30);
+    var temp60Min = parseInt($("#min60").val() * 60);
+    var temp3Hours = parseInt($("#hours3").val() * (60 * 3));
+    var temp8Hours = parseInt($("#hours8").val() * (60 * 8));
+    var temp15Hours = parseInt($("#hours15").val() * (60 * 15));
+    var temp24Hours = parseInt($("#hours24").val() * (60 * 24));
+    var temp3Day = parseInt($("#day3").val() * (1440 * 3));
+    var temp7Day = parseInt($("#day7").val() * (1440 * 7));
+    var temp30Day = parseInt($("#day30").val() * (1440 * 30));
+
+    var time = teamp1Min + temp5Min + temp10Min + temp30Min + temp60Min
+    + temp3Hours + temp8Hours + temp15Hours + temp24Hours + temp3Day + temp7Day + temp30Day;
+
+    days = Math.floor(time / (24*60)); 
+    var leftover_minutes = time % (24*60);
+    hours = Math.floor(leftover_minutes / 60);
+    mins = time - (days*1440) - (hours*60);
+    $("#calcSpeed").text(days + " Ngày - " + hours + " Giờ - " + mins +  " Phút");
+}
+
+function CornWood(){
+    var temp1k = parseInt($("#cornWood1k").val() * 1000);
+    var temp10k = parseInt($("#cornWood10k").val() * 10000);
+    var temp50k = parseInt($("#cornWood50k").val() * 50000);
+    var temp150k = parseInt($("#cornWood150k").val() * 150000);
+    var temp500k = parseInt($("#cornWood500k").val() * 500000);
+    var temp1m5 = parseInt($("#cornWood1m5").val() * 1500000);
+    var temp5m = parseInt($("#cornWood5m").val() * 5000000);
+
+    var cornWood = temp1k + temp10k + temp50k + temp150k + temp500k + temp1m5 + temp5m;
+    $("#calcCornWood").text("Kết quả: " + cornWood.toLocaleString());
+    $("#msgCornWood").text("Nhiều quá cho xin một ít ạ!");
+}
+
+function Stone(){
+    var temp750 = parseInt($("#stone750").val() * 750);
+    var temp7k5 = parseInt($("#stone7k5").val() * 7500);
+    var temp37k5 = parseInt($("#stone37k5").val() * 37500);
+    var temp112k5 = parseInt($("#stone112k5").val() * 112500);
+    var temp375k = parseInt($("#stone375k").val() * 375000);
+    var temp1m125 = parseInt($("#stone1m125k").val() * 1125000);
+    var temp3m750 = parseInt($("#stone3m750k").val() * 3750000);
+
+    var stone = temp750 + temp7k5 + temp37k5 + temp112k5 + temp375k + temp1m125 + temp3m750;
+    $("#calcStone").text("Kết quả: " + stone.toLocaleString());
+    $("#msgStone").text("Nhiều quá cho xin một ít ạ!");
+}
+
+function Gold() {
+    var temp500 = arseInt($("#gold500").val() * 500);
+    var temp3k = arseInt($("#gold3k").val() * 3000);
+    var temp15k = arseInt($("#gold15k").val() * 15000);
+    var temp50k = arseInt($("#gold50k").val() * 50000);
+    var temp200k = arseInt($("#gold200k").val() * 200000);
+    var temp600k = arseInt($("#gold600k").val() * 600000);
+    var temp2m = arseInt($("#gold2m").val() * 2000000);
+
+    var gold = temp500 + temp3k + temp15k + temp50k + temp200k + temp600k + temp2m;
+    $("#calcGold").text("Kết quả: " + gold.toLocaleString());
+    $("#msgGold").text("Nhiều quá cho xin một ít ạ!");
+}
+
+function ClearValue(params) {
+    document.documentElement.scrollTop = 0;
+    if(params === 'Speed'){
+        $("#min1").val(0);
+        $("#min5").val(0);
+        $("#min10").val(0);
+        $("#min15").val(0);
+        $("#min30").val(0);
+        $("#min60").val(0);
+        $("#hours3").val(0);
+        $("#hours8").val(0);
+        $("#hours15").val(0);
+        $("#hours24").val(0);
+        $("#day3").val(0);
+        $("#day7").val(0);
+        $("#day30").val(0);
+        $("#calcSpeed").text("0 Ngày - 0 Giờ - 0 Phút");
+    }
+
+    if(params === 'CornWood'){
+        $("#cornWood1k").val(0);
+        $("#cornWood10k").val(0);
+        $("#cornWood50k").val(0);
+        $("#cornWood150k").val(0);
+        $("#cornWood500k").val(0);
+        $("#cornWood1m5").val(0);
+        $("#calcCornWood").text("Kết quả: 0");
+        $("#msgCornWood").text("");
+    }
+
+    if(params === 'Stone'){
+        $("#stone750").val(0);
+        $("#stone7k5").val(0);
+        $("#stone37k5").val(0);
+        $("#stone112k5").val(0);
+        $("#stone375k").val(0);
+        $("#stone1m125k").val(0);
+        $("#stone3m750k").val(0);
+        $("#calcStone").text("");
+        $("#msgStone").text("");
+    }
+
+    if(params === 'Gold'){
+        $("#gold500").val(0);
+        $("#gold3k").val(0);
+        $("#gold15k").val(0);
+        $("#gold50k").val(0);
+        $("#gold200k").val(0);
+        $("#gold600k").val(0);
+        $("#gold2m").val(0);
+        $("#calcGold").text("");
+        $("#msgGold").text("");
+    }
+}
+</script>
+</head>
+<body>
+    <div class="container-sm d-flex aligns-items-center justify-content-center" style="padding-top: 20px; padding-bottom: 50px;">
+        <div class="col-sm-6">
+            <ul class="nav nav-pills" id="myTab">
+                <li class="nav-item">
+                    <a href="#speed" class="nav-link active">Tăng tốc</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#cornwood" class="nav-link">Gỗ & Lúa</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#stone" class="nav-link">Đá</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#gold" class="nav-link">Vàng</a>
+                </li>
+            </ul>
+            <div class="tab-content" style="margin-top: 20px;">
+                <div class="tab-pane fade show active" id="speed">
+                    <div class="mb-3">
+                        <label for="min1" class="form-label">1 Phút</label>
+                        <input type="number" class="form-control" id="min1" min="0" max="999999" value="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="min5" class="form-label">5 phút</label>
+                        <input type="number" class="form-control" id="min5" min="0" max="999999" value="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="min10" class="form-label">10 phút</label>
+                        <input type="number" class="form-control" id="min10" min="0" max="999999" value="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="min15" class="form-label">15 phút</label>
+                        <input type="number" class="form-control" id="min15" min="0" max="999999" value="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="min30" class="form-label">30 phút</label>
+                        <input type="number" class="form-control" id="min30" min="0" max="999999" value="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="min60" class="form-label">60 phút</label>
+                        <input type="number" class="form-control" id="min60" min="0" max="999999" value="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="hours3" class="form-label">3 Giờ</label>
+                        <input type="number" class="form-control" id="hours3" min="0" max="999999" value="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="hours8" class="form-label">8 Giờ</label>
+                        <input type="number" class="form-control" id="hours8" min="0" max="999999" value="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="hours15" class="form-label">15 Giờ</label>
+                        <input type="number" class="form-control" id="hours15" min="0" max="999999" value="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="hours24" class="form-label">24 Giờ</label>
+                        <input type="number" class="form-control" id="hours24" min="0" max="999999" value="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="day3" class="form-label">3 Ngày</label>
+                        <input type="number" class="form-control" id="day3" min="0" max="999999" value="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="day7" class="form-label">7 Ngày</label>
+                        <input type="number" class="form-control" id="day7" min="0" max="999999" value="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="day30" class="form-label">30 Ngày</label>
+                        <input type="number" class="form-control" id="day30" min="0" max="999999" value="0">
+                    </div>
+                    <div class="mb-3" style="text-align: center;">
+                        <label>Kết quả: <p id="calcSpeed">0 Ngày - 0 Giờ - 0 Phút</p></label>
+                    </div>
+                    <div class="mb-3" style="text-align: center;">
+                        <button type="button" onclick="Speed()" class="btn btn-primary">Tính toán</button>
+                        <button type="button" onclick="ClearValue('Speed')" class="btn btn-primary">Xoá</button>
+                    </div>
+                    <div class="mb-3" style="text-align: center;">
+                        <p style="color: red;">Để giúp người viết ra trang web này có đường sống
+                            <br/>
+                            Xin hãy donate 1m RSS cho người viết tại mỗi lần sử dụng
+                            <br/>
+                            Xin chân thành cảm ơn!
+                        </p>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="cornwood">
+                    <div class="mb-3">
+                        <label for="cornWood1k" class="form-label">1,000</label>
+                        <input type="number" class="form-control" id="cornWood1k" min="0" max="999999" value="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="cornWood10k" class="form-label">10,000</label>
+                        <input type="number" class="form-control" id="cornWood10k" min="0" max="999999" value="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="cornWood50k" class="form-label">50,000</label>
+                        <input type="number" class="form-control" id="cornWood50k" min="0" max="999999" value="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="cornWood150k" class="form-label">150,000</label>
+                        <input type="number" class="form-control" id="cornWood150k" min="0" max="999999" value="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="cornWood500k" class="form-label">500,000</label>
+                        <input type="number" class="form-control" id="cornWood500k" min="0" max="999999" value="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="cornWood1m5" class="form-label">1,500,000</label>
+                        <input type="number" class="form-control" id="cornWood1m5" min="0" max="999999" value="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="cornWood5m" class="form-label">5,000,000</label>
+                        <input type="number" class="form-control" id="cornWood5m" min="0" max="999999" value="0">
+                    </div>
+                    <div class="mb-3" style="text-align: center;">
+                        <label>
+                            <p id="calcCornWood">Kết quả: 0</p>
+                            <p id="msgCornWood"></p>
+                        </label>
+                    </div>
+                    <div class="mb-3" style="text-align: center;">
+                        <button type="button" onclick="CornWood()" class="btn btn-primary">Tính toán</button>
+                        <button type="button" onclick="ClearValue('CornWood')" class="btn btn-primary">Xoá</button>
+                    </div>
+                    <div class="mb-3" style="text-align: center;">
+                        <p style="color: red;">Để giúp người viết ra trang web này có đường sống
+                            <br/>
+                            Xin hãy donate 1m RSS cho người viết tại mỗi lần sử dụng
+                            <br/>
+                            Xin chân thành cảm ơn!
+                        </p>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="stone">
+                    <div class="mb-3">
+                        <label for="stone750" class="form-label">750</label>
+                        <input type="number" class="form-control" id="stone750" min="0" max="999999" value="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="stone7k5" class="form-label">7,500</label>
+                        <input type="number" class="form-control" id="stone7k5" min="0" max="999999" value="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="stone37k5" class="form-label">37,500</label>
+                        <input type="number" class="form-control" id="stone37k5" min="0" max="999999" value="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="stone112k5" class="form-label">112,500</label>
+                        <input type="number" class="form-control" id="stone112k5" min="0" max="999999" value="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="stone375k" class="form-label">375,000</label>
+                        <input type="number" class="form-control" id="stone375k" min="0" max="999999" value="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="stone1m125k" class="form-label">1,125,000</label>
+                        <input type="number" class="form-control" id="stone1m125k" min="0" max="999999" value="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="stone3m750k" class="form-label">3,750,000</label>
+                        <input type="number" class="form-control" id="stone3m750k" min="0" max="999999" value="0">
+                    </div>
+                    <div class="mb-3" style="text-align: center;">
+                        <label>
+                            <p id="calcStone">Kết quả: 0</p>
+                            <p id="msgStone"></p>
+                        </label>
+                    </div>
+                    <div class="mb-3" style="text-align: center;">
+                        <button type="button" onclick="Stone()" class="btn btn-primary">Tính toán</button>
+                        <button type="button" onclick="ClearValue('Stone')" class="btn btn-primary">Xoá</button>
+                    </div>
+                    <div class="mb-3" style="text-align: center;">
+                        <p style="color: red;">Để giúp người viết ra trang web này có đường sống
+                            <br/>
+                            Xin hãy donate 1m RSS cho người viết tại mỗi lần sử dụng
+                            <br/>
+                            Xin chân thành cảm ơn!
+                        </p>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="gold">
+                    <div class="mb-3">
+                        <label for="gold500" class="form-label">500</label>
+                        <input type="number" class="form-control" id="gold500" min="0" max="999999" value="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="gold3k" class="form-label">3,000</label>
+                        <input type="number" class="form-control" id="gold3k" min="0" max="999999" value="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="gold15k" class="form-label">15,000</label>
+                        <input type="number" class="form-control" id="gold15k" min="0" max="999999" value="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="gold50k" class="form-label">50,000</label>
+                        <input type="number" class="form-control" id="gold50k" min="0" max="999999" value="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="gold200k" class="form-label">200,000</label>
+                        <input type="number" class="form-control" id="gold200k" min="0" max="999999" value="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="gold600k" class="form-label">600,000</label>
+                        <input type="number" class="form-control" id="gold600k" min="0" max="999999" value="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="gold2m" class="form-label">2,000,000</label>
+                        <input type="number" class="form-control" id="gold2m" min="0" max="999999" value="0">
+                    </div>
+                    <div class="mb-3" style="text-align: center;">
+                        <label>
+                            <p id="calcGold">Kết quả: 0</p>
+                            <p id="msgGold"></p>
+                        </label>
+                    </div>
+                    <div class="mb-3" style="text-align: center;">
+                        <button type="button" onclick="Gold()" class="btn btn-primary">Tính toán</button>
+                        <button type="button" onclick="ClearValue('Gold')" class="btn btn-primary">Xoá</button>
+                    </div>
+                    <div class="mb-3" style="text-align: center;">
+                        <p style="color: red;">Để giúp người viết ra trang web này có đường sống
+                            <br/>
+                            Xin hãy donate 1m RSS cho người viết tại mỗi lần sử dụng
+                            <br/>
+                            Xin chân thành cảm ơn!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
