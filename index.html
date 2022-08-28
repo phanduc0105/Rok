@@ -74,13 +74,13 @@ function Stone(){
 }
 
 function Gold() {
-    var temp500 = arseInt($("#gold500").val() * 500);
-    var temp3k = arseInt($("#gold3k").val() * 3000);
-    var temp15k = arseInt($("#gold15k").val() * 15000);
-    var temp50k = arseInt($("#gold50k").val() * 50000);
-    var temp200k = arseInt($("#gold200k").val() * 200000);
-    var temp600k = arseInt($("#gold600k").val() * 600000);
-    var temp2m = arseInt($("#gold2m").val() * 2000000);
+    var temp500 = parseInt($("#gold500").val() * 500);
+    var temp3k = parseInt($("#gold3k").val() * 3000);
+    var temp15k = parseInt($("#gold15k").val() * 15000);
+    var temp50k = parseInt($("#gold50k").val() * 50000);
+    var temp200k = parseInt($("#gold200k").val() * 200000);
+    var temp600k = parseInt($("#gold600k").val() * 600000);
+    var temp2m = parseInt($("#gold2m").val() * 2000000);
 
     var gold = temp500 + temp3k + temp15k + temp50k + temp200k + temp600k + temp2m;
     $("#calcGold").text("Kết quả: " + gold.toLocaleString());
