@@ -141,7 +141,17 @@ function ClearValue(params) {
         $("#msgGold").text("");
     }
 }
-</script>
+
+</head>
+<body>
+    
+   <!-- Messenger Plugin chat Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Plugin chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
     <script>
       var chatbox = document.getElementById('fb-customer-chat');
       chatbox.setAttribute("page_id", "356168767834112");
@@ -165,15 +175,6 @@ function ClearValue(params) {
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
     </script>
-</head>
-<body>
-    
-    <!-- Messenger Plugin chat Code -->
-    <div id="fb-root"></div>
-
-    <!-- Your Plugin chat code -->
-    <div id="fb-customer-chat" class="fb-customerchat">
-    </div>
 
     
     <div class="container-sm d-flex aligns-items-center justify-content-center" style="padding-top: 20px; padding-bottom: 50px;">
